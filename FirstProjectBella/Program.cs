@@ -24,9 +24,9 @@ class MyMain
         Console.Write("Please enter your age: ");
         int age = Int32.Parse(Console.ReadLine());
         Console.Write("Please enter your height: ");
-        float height = Int32.Parse(Console.ReadLine());
+        float height = float.Parse(Console.ReadLine());
         Console.Write("Please enter your weight: ");
-        float weight = Int32.Parse(Console.ReadLine());
+        float weight = float.Parse(Console.ReadLine());
 
         //გამოაქვს სრული ინფორმაცია მომხმარებელზე:
         Console.WriteLine(name + " " + surname);
@@ -39,25 +39,17 @@ class MyMain
         Console.WriteLine("Your BMI equals: " + sum2);
 
         //დავალება#3: ნახატი
-        string verticalSimbol = "|";
-        string horizontalSimbol = "_";
-        Console.WriteLine(" " + verticalSimbol + " " + verticalSimbol + " ");
-        Console.WriteLine("1" + verticalSimbol + "2" + verticalSimbol + "3");
-        Console.WriteLine(horizontalSimbol + verticalSimbol + horizontalSimbol + verticalSimbol + horizontalSimbol);
-        Console.WriteLine(" " + verticalSimbol + " " + verticalSimbol + " ");
-        Console.WriteLine("4" + verticalSimbol + "5" + verticalSimbol + "6");
-        Console.WriteLine(horizontalSimbol + verticalSimbol + horizontalSimbol + verticalSimbol + horizontalSimbol);
-        Console.WriteLine(" " + verticalSimbol + " " + verticalSimbol + " ");
-        Console.WriteLine("7" + verticalSimbol + "8" + verticalSimbol + "9");
+        Console.WriteLine("    |     |    ");
+        Console.WriteLine(" 1  |  2  |  3 ");
+        Console.WriteLine("    |     |    ");
+        Console.WriteLine("_______________");
+        Console.WriteLine("    |     |    ");
+        Console.WriteLine(" 4  |  5  |  6 ");
+        Console.WriteLine("    |     |    ");
+        Console.WriteLine("_______________");
+        Console.WriteLine("    |     |    ");
+        Console.WriteLine(" 7  |  8  |  9 ");
+        Console.WriteLine("    |     |    ");
 
-        //Console.WriteLine(" " + "|" + " " + "|" + " ");
-        //Console.WriteLine("1" + "|" + "2" + "|" + "3");
-        //Console.WriteLine("_" + "|" + "_" + "|" + "_");
-        //Console.WriteLine(" " + "|" + " " + "|" + " ");
-        //Console.WriteLine("4" + "|" + "5" + "|" + "6");
-        //Console.WriteLine("_" + "|" + "_" + "|" + "_");   
-        //Console.WriteLine(" " + "|" + " " + "|" + " ");
-        //Console.WriteLine("7" + "|" + "8" + "|" + "9");
-        //Console.WriteLine("_" + "|" + "_" + "|" + "_");
     }
 }
