@@ -1,21 +1,12 @@
-﻿/*
- * This is my first step in C# world
+﻿/* 1. შევქმნათ სამი ცვლადი (x, z, y). მივანიჭოთ მნიშვნელობები. გამოვიყვანოთ კონსოლში: x+z*y=ჯამი; მაგ. 4,5,10-ის შედეგია 54.
+ * 2. პროგრამა სთავაზობს მომხმარებელს შეიყვანოს სახელი (), გვარი (), ასაკი (), სიმაღლე () და წონა (). შევინახოთ ეს მონაცემები შესაბამისი ტიპის ცვლადებში. გამოვიყვანოთ მთალი ინფორმაცია კონსოლში.
+ * 3. დაწერეთ კოდი, რომელიც ითვლის ადამიანის BMI (Body Mass Index).
+ * 4. კონსოლში ნახატის დახატვა.
  */
-
-
-class MyMain
+class Lesson4Bella
 {
     static void Main(string[] args)
-    {
-        //Just greeting
-        Console.WriteLine("Welcome to C# Bella");
-        Console.WriteLine("Wish you all the best");
-        regularMethod();
-    }
+    {   
 
-    /// This method does not show the subject as it is.
-    static void regularMethod()
-    {
-        Console.WriteLine();
     }
 }
