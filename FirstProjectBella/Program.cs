@@ -9,8 +9,9 @@ class Lesson4Bella
 {
     static void Main(string[] args)
     {
-        int sum = getSum(10,5);
+        Console.WriteLine(getSum(11, 8));
     }
+
     //დავალება 1. შევქმნათ მეთოდი, რომელსაც გადავცემთ ორ სრულ რიცხვს. მეთოდმა უნდა დააბრუნოს ორი რიცხვის ჯამი. გამოვიყვანოთ ეს ჯამი შესვლის წერტილის მეთოდის მეშვეობით კონსოლში.
     static int getSum(int x, int y) 
     {
