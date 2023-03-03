@@ -4,52 +4,96 @@
  * კომენტარი: ყველაფერი კეთდება ციკლების მეშვეობით. კერძოდ დაგვჭირდება 2 ციკლი
  */
 
+using System;
+
 class Lesson5Bella
 {
     static void Main(string[] args)
     {
-        welcomingMessage();
         startGame();
+
     }
-    //მომხმარებლისთვის ინფორმაციის მიწოდება თამაშის ჟანრის შესახებ
-    static void welcomingMessage() 
-    {
-        Console.Write("Please enter your name: ");
-        string name = Console.ReadLine();
-        Console.WriteLine("Welcome to the game " + name);
-        Console.WriteLine("I have hidden numbers for you.");
-        Console.WriteLine("This number is between 0 to 20. Please, guess it.");
-        Console.WriteLine("You have three attemps.");
-        Console.WriteLine("Let's start the game. Good Luck! :)");
-    }
+    
+    //თამაშის ეტაპები
     static void startGame() 
     {
+        welcomingMessage();
         int randomNumber = getRandomNumber();
-        int usersNumber = enterNumber();
-
-        //მომხმარებლისთვის შეტყობინების გამოტანა თამაშის შედეგის შესახებ.
-        if (randomNumber == usersNumber)
+        int userNumber;
+        //ციკლი რომელიც მოთამაშეს საშუალებას 3 შეცდომის დაშვების საშუალებას აძლევს, მესამე შეცდომის დაშვების შემედეგ გამოაქვს შეტყობინება თამაშის წაგების შესახებ.
+        for (int counter = 1; counter <= 3; counter++)
         {
-            Console.WriteLine("Congratulation, You have Won");
+            userNumber = enterNumber();
+            if (checkGame(userNumber, randomNumber, counter))
+            {
+                return;
+            }
         }
-        else if (randomNumber > usersNumber)
+        Console.WriteLine("GAME OVER!"); 
+        //თამაშის ხელახლა დაწყება
+        newChance();
+    }
+
+    //მოთამაშისთვის ინფორმაციის მიწოდება თამაშის წესების შესახებ
+    static void welcomingMessage() 
+    {
+        Console.WriteLine("Let's start the game. I have hidden numbers for you.");
+        Console.WriteLine("This number is between 0 to 20. Please, guess it.");
+        Console.WriteLine("You have three attemps. Good Luck!");
+    }
+
+    //შემთხვევითი რიცხვის 0-დან 20-ის ჩათვლით
+    static int getRandomNumber() 
+    {
+        return new Random().Next(0, 21);
+    }
+
+    //მოთამაშეს ეკითხება რიცხვს.
+    static int enterNumber() 
+    {
+        Console.Write("Please enter a number: ");
+        return Int32.Parse(Console.ReadLine());
+    }
+
+    //ამოწმებს მოთამაშის მიერ შეყვანილი რიცხვი ემთხვევა თუ არა თამაშის მიერ შემთხვევით შერჩეულ რიცხვს
+    static bool checkGame(int userNumber, int randomNumber, int counter) 
+    {
+        if (randomNumber == userNumber)
+        {
+            Console.WriteLine("You have won!");
+            newChance();
+            return true;
+        }
+        else if (randomNumber > userNumber && counter != 3)
         {
             Console.WriteLine("Your number is lower than random number.");
         }
-        else if (randomNumber < usersNumber) 
+        else if (randomNumber < userNumber && counter != 3) 
         {
-            Console.WriteLine("Your number is higher than random number.");
+            Console.WriteLine("Your number is higher than random number");
         }
+        return false;
     }
-    //თამაშის შემთხვევითი რიცხვების დიაპაზონი
-    static int getRandomNumber() 
+
+    //თამაშის დასრულების შემდეგ მოთამაშეს აძლევს საშუალებას თავიდან დაიწყოს თამაში ან დაასრულოს.
+    static void newChance() 
     {
-        return new Random().Next(0,21);
+        Console.WriteLine();
+        string playAgain = "yes";
+        Console.WriteLine("Play again (yes / no)?");
+        string enteredAnswer = Console.ReadLine();
+        
+        if (enteredAnswer == playAgain)
+        {
+
+            startGame();
+            return;
+        }
+        else 
+        {
+            Console.WriteLine("Good Bye");
+        }
+
     }
-    //მომხმარებლის მიერ რიცხვის შერჩევა
-    static int enterNumber() 
-    {
-        Console.WriteLine("Please, enter a number: ");
-        return Int32.Parse(Console.ReadLine());
-    }
+
 }
