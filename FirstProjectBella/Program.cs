@@ -1,99 +1,38 @@
-﻿/* დავალება: თამაშის დაწერა, მომხმარებელს უნდა ჰქონდეს შესაძლებლობა, რომ სამჯერ სცადოს რიცხვის გამოცნობა. თუ რიცხვი მესამე ცდის შემდეგ ვერ გამოიცნო უნდა გამოვიდეს შეტყობინება
- * წაგების შესახებ, თუ გამოიცნო უნდა გამოვიდეს შეტყობინება გამარჯვების შესახებ.
- * უნდა დაუმატოთ შესაძლებლობა პროგრამას, რომ მომხმარებელმა ხელახლა დაიწყოს თამაში.
- * კომენტარი: ყველაფერი კეთდება ციკლების მეშვეობით. კერძოდ დაგვჭირდება 2 ციკლი
- */
-
-using System;
-
-class Lesson5Bella
+﻿class JustForFun
 {
     static void Main(string[] args)
     {
-        startGame();
-
+        RunCalculateCurrency();
     }
-    
-    //თამაშის ეტაპები
-    static void startGame() 
+    static decimal CalculateNbgRate(decimal amount, string threeLetterRegionCode)
     {
-        welcomingMessage();
-        int randomNumber = getRandomNumber();
-        int userNumber;
-        //ციკლი რომელიც მოთამაშეს საშუალებას 3 შეცდომის დაშვების საშუალებას აძლევს, მესამე შეცდომის დაშვების შემედეგ გამოაქვს შეტყობინება თამაშის წაგების შესახებ.
-        for (int counter = 1; counter <= 3; counter++)
+        decimal rate = 0.00M;
+        switch (threeLetterRegionCode)
         {
-            userNumber = enterNumber();
-            if (checkGame(userNumber, randomNumber, counter))
-            {
-                return;
-            }
+            case "USD": //US Dollar
+                rate = 2.6064M;
+                break;
+            case "EUR": //Europian Union
+                rate = 2.7680M;
+                break;
         }
-        Console.WriteLine("GAME OVER!"); 
-        //თამაშის ხელახლა დაწყება
-        newChance();
+        return amount * rate;
     }
-
-    //მოთამაშისთვის ინფორმაციის მიწოდება თამაშის წესების შესახებ
-    static void welcomingMessage() 
+    static void RunCalculateCurrency()
     {
-        Console.WriteLine("Let's start the game. I have hidden numbers for you.");
-        Console.WriteLine("This number is between 0 to 20. Please, guess it.");
-        Console.WriteLine("You have three attemps. Good Luck!");
-    }
-
-    //შემთხვევითი რიცხვის 0-დან 20-ის ჩათვლით
-    static int getRandomNumber() 
-    {
-        return new Random().Next(0, 21);
-    }
-
-    //მოთამაშეს ეკითხება რიცხვს.
-    static int enterNumber() 
-    {
-        Console.Write("Please enter a number: ");
-        return Int32.Parse(Console.ReadLine());
-    }
-
-    //ამოწმებს ყველა ცვლადს მოთამაშის მიერ შეყვანილი რიცხვი, თამაშის მიერ შერჩეული შემთხვევითი რიცხვი თუ ემთხვევა ერთმანეთს და ციკლის რაოდენობა თუ აძლევს კიდევ თამაშის შანსს.
-    static bool checkGame(int userNumber, int randomNumber, int counter) 
-    {
-        if (randomNumber == userNumber)
+        Console.Write("Enter an amount you want to exchange: ");
+        string amountForExchange = Console.ReadLine();
+        Console.Write("Enter a three-letter region code: ");
+        string region = Console.ReadLine();
+        if (decimal.TryParse(amountForExchange, out decimal amount))
         {
-            Console.WriteLine("You have won!");
-            newChance();
-            return true;
+            decimal amountInGel = CalculateNbgRate(amount, region);
+            Console.WriteLine("You have " + amountInGel + " in GEL");
         }
-        else if (randomNumber > userNumber && counter != 3)
+        else
         {
-            Console.WriteLine("Your number is lower than random number.");
+            Console.WriteLine("You did not enter a valid region!");
         }
-        else if (randomNumber < userNumber && counter != 3) 
-        {
-            Console.WriteLine("Your number is higher than random number");
-        }
-        return false;
-    }
-
-    //თამაშის დასრულების შემდეგ მოთამაშეს აძლევს საშუალებას თავიდან დაიწყოს თამაში ან დაასრულოს.
-    static void newChance() 
-    {
-        Console.WriteLine();
-        string playAgain = "yes";
-        Console.WriteLine("Play again (yes / no)?");
-        string enteredAnswer = Console.ReadLine();
-        
-        if (enteredAnswer == playAgain)
-        {
-
-            startGame();
-            return;
-        }
-        else 
-        {
-            Console.WriteLine("Good Bye");
-        }
-
     }
 
 }
