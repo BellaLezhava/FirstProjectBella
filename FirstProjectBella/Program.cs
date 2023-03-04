@@ -55,7 +55,7 @@ class Lesson5Bella
         return Int32.Parse(Console.ReadLine());
     }
 
-    //ამოწმებს მოთამაშის მიერ შეყვანილი რიცხვი ემთხვევა თუ არა თამაშის მიერ შემთხვევით შერჩეულ რიცხვს
+    //ამოწმებს ყველა ცვლადს მოთამაშის მიერ შეყვანილი რიცხვი, თამაშის მიერ შერჩეული შემთხვევითი რიცხვი თუ ემთხვევა ერთმანეთს და ციკლის რაოდენობა თუ აძლევს კიდევ თამაშის შანსს.
     static bool checkGame(int userNumber, int randomNumber, int counter) 
     {
         if (randomNumber == userNumber)
